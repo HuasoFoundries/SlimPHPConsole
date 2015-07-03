@@ -7,30 +7,41 @@ to your browser's console using [PHP-Console](https://github.com/barbushin/php-c
  
 ### USAGE
  
-  $logwriter = new \Amenadiel\SlimPHPConsole\Log\PHPConsoleWriter(true);
-  $app = new \Slim\Slim(array(
-    'log.enabled' => true,
-    'log.level' => \Slim\Log::DEBUG,
-    'log.writer' => $logwriter
-  ));
+Instantiate the log writer. If you don't want to have the handler autostarted, pass `false` as a parameter, `true` is implied otherwise.
+
+When the handler is started it will set itself as error and exception handler too, unless you set it otherwise.
  
-  $app->log->debug('Debug called!');
-  $app->log->info('This is just info');
-  $app->log->info('This is just info');
-  $app->log->warning('Heads Up! This is a warning');
+    $logwriter = new \Amenadiel\SlimPHPConsole\Log\PHPConsoleWriter(true);
+    $app = new \Slim\Slim(array(
+        'log.enabled' => true,
+        'log.level' => \Slim\Log::DEBUG,
+        'log.writer' => $logwriter
+    ));
  
-You can pass custom tags to PHPConsole by using this adapter's debug method
+    $app->log->debug('Debug called!');
+    $app->log->info('This is just info');
+    $app->log->info('This is just info');
+    $app->log->warning('Heads Up! This is a warning');
  
-  $app->log->getWriter()->debug('This has a custom tag', 'custom.tag');
+You can pass custom tags to PHPConsole by using this adapter's `debug` method which forwards its parameters to PHPConsole's `debug` method.
  
+    $app->log->getWriter()->debug('This has a custom tag', 'custom.tag');
+
+If you are using PHPConsole directly somewhere else in your app, remember not to start it twice, for it will throw an exception. Use its `isStarted` method to check if it's already started.
+
+    $myHandler = \PhpConsole\Handler::getInstance();
+    
+    if (!$myHandler->isStarted()) {
+        $myHandler->start(); // Only start it if it hasn't been started yet
+    }
  
 ### SETTINGS
  
 You can use PHP-Console's configuration methods by getting a reference to the Handler instance or the Connector instance. For example:
  
-  $handler = $logwriter->getHandler();
-  $handler->setHandleErrors(false);  // disable errors handling
+    $handler = $logwriter->getHandler();
+    $handler->setHandleErrors(false);  // disable errors handling
  
-  $connector = $logwriter->getConnector();
-  $connector->setPassword('macoy123'); //sets a very insecure passwd
+    $connector = $logwriter->getConnector();
+    $connector->setPassword('macoy123'); //sets a very insecure passwd
 
