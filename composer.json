@@ -1,7 +1,6 @@
 {
 	"name": "amenadiel/slim-phpconsole",
 	"type": "library",
-	"version": "0.0.3",
 	"description": "PHP-Console logging support for Slim Framework",
 	"keywords": ["logging", "extensions", "middleware"],
 	"homepage": "http://github.com/amenadiel/SlimPHPConsole",
