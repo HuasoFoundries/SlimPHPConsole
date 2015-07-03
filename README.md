@@ -4,8 +4,18 @@ PHP-Console log writer for Slim Framework
 
 Use this custom log writer to output [Slim Framework](http://www.slimframework.com/)'s log messages
 to your browser's console using [PHP-Console](https://github.com/barbushin/php-console).
+
+### Installation
+
+Just add `amenadiel/slim-phpconsole` to your `composer.json` file in the require or require-dev sections:
+
+    {
+        "require": {
+            "amenadiel/slim-phpconsole":"~0.0.1"
+        }
+    }
  
-### USAGE
+### Usage
  
 Instantiate the log writer. If you don't want to have the handler autostarted, pass `false` as a parameter, `true` is implied otherwise.
 
@@ -35,7 +45,7 @@ If you are using PHPConsole directly somewhere else in your app, remember not to
         $myHandler->start(); // Only start it if it hasn't been started yet
     }
  
-### SETTINGS
+### Optional Settings
  
 You can use PHP-Console's configuration methods by getting a reference to the Handler instance or the Connector instance. For example:
  
