@@ -1,6 +1,6 @@
 {
   "name": "SlimPHPConsole",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "description": "PHP-Console logging support for Slim Framework.",
   "keywords": [
     "php-console",
