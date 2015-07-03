@@ -22,7 +22,7 @@ Instantiate the log writer. If you don't want to have the handler autostarted, p
 When the handler is started it will set itself as error and exception handler too, unless you set it otherwise.
  
 ```php
-    $logwriter = new \Amenadiel\SlimPHPConsole\Log\PHPConsoleWriter(true);
+    $logwriter = new \Amenadiel\SlimPHPConsole\PHPConsoleWriter(true);
     $app = new \Slim\Slim(array(
         'log.enabled' => true,
         'log.level' => \Slim\Log::DEBUG,
