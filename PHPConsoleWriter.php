@@ -122,12 +122,12 @@ class PHPConsoleWriter
 
     }
 
-    public static function getHandler()
+    public function getHandler()
     {
         return $this->handler;
     }
 
-    public static function getConnector()
+    public function getConnector()
     {
         return $this->connector;
     }
