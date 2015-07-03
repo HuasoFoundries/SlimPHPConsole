@@ -11,7 +11,7 @@ Just add `amenadiel/slim-phpconsole` to your `composer.json` file in the require
 
     {
         "require": {
-            "amenadiel/slim-phpconsole":"~0.0.1"
+            "amenadiel/slim-phpconsole":"~0.0.4"
         }
     }
  
