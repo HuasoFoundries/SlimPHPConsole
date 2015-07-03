@@ -21,6 +21,7 @@ Instantiate the log writer. If you don't want to have the handler autostarted, p
 
 When the handler is started it will set itself as error and exception handler too, unless you set it otherwise.
  
+```php
     $logwriter = new \Amenadiel\SlimPHPConsole\Log\PHPConsoleWriter(true);
     $app = new \Slim\Slim(array(
         'log.enabled' => true,
@@ -32,26 +33,34 @@ When the handler is started it will set itself as error and exception handler to
     $app->log->info('This is just info');
     $app->log->info('This is just info');
     $app->log->warning('Heads Up! This is a warning');
+```
  
 You can pass custom tags to PHPConsole by using this adapter's `debug` method which forwards its parameters to PHPConsole's `debug` method.
- 
+
+```php 
     $app->log->getWriter()->debug('This has a custom tag', 'custom.tag');
+```
 
 If you are using PHPConsole directly somewhere else in your app, remember not to start it twice, for it will throw an exception. Use its `isStarted` method to check if it's already started.
 
+```php
     $myHandler = \PhpConsole\Handler::getInstance();
     
     if (!$myHandler->isStarted()) {
         $myHandler->start(); // Only start it if it hasn't been started yet
     }
+```
  
 ### Optional Settings
  
 You can use PHP-Console's configuration methods by getting a reference to the Handler instance or the Connector instance. For example:
  
+ ```php
     $handler = $logwriter->getHandler();
     $handler->setHandleErrors(false);  // disable errors handling
  
     $connector = $logwriter->getConnector();
     $connector->setPassword('macoy123'); //sets a very insecure passwd
+```
+
 
