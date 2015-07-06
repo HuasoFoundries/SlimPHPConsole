@@ -52,7 +52,7 @@
  *
  *
  *
- * @author Amenadiel <amenadiel@gmail.com>
+ * @author Felipe Figueroa <amenadiel@gmail.com>
  * @copyright 2015 Amenadiel
  *
  * MIT LICENSE
@@ -79,7 +79,7 @@
 
 namespace Amenadiel\SlimPHPConsole;
 
-class PHPConsoleWriter
+class PHPConsoleWriter extends \Slim\Middleware
 {
     /**
      * @var handler
@@ -120,6 +120,15 @@ class PHPConsoleWriter
             $this->handler->start();
         }
 
+    }
+
+    public function call()
+    {
+        $app = $this->app;
+
+        $app->config('log.writer', $this);
+
+        $this->next->call();
     }
 
     public function getHandler()
