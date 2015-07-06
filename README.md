@@ -23,14 +23,30 @@ When the handler is started it will set itself as error and exception handler to
  
 ```php
     $logwriter = new \Amenadiel\SlimPHPConsole\PHPConsoleWriter(true);
+
     $app = new \Slim\Slim(array(
         'log.enabled' => true,
         'log.level' => \Slim\Log::DEBUG,
         'log.writer' => $logwriter
     ));
+```
+
+Starting from version `0.0.6` this adapter extends Slim\Middleware. Therefore, you can also use the `add` method of your app
+
+```php
+    $app = new \Slim\Slim(array(
+        'log.enabled' => true,
+        'log.level' => \Slim\Log::DEBUG
+    ));
+
+    $app->add(new \Amenadiel\SlimPHPConsole\PHPConsoleWriter);
+```
+
+Both ways of setting PHP-Console as your logger are pretty much the same. Afterwards, you can send messages to your browser's console using `$app->log`'s methods.
+
  
+```php
     $app->log->debug('Debug called!');
-    $app->log->info('This is just info');
     $app->log->info('This is just info');
     $app->log->warning('Heads Up! This is a warning');
 ```
@@ -56,8 +72,10 @@ If you are using PHPConsole directly somewhere else in your app, remember not to
 You can use PHP-Console's configuration methods by getting a reference to the Handler instance or the Connector instance. For example:
  
  ```php
+    $logwriter = new \Amenadiel\SlimPHPConsole\PHPConsoleWriter(false);
     $handler = $logwriter->getHandler();
-    $handler->setHandleErrors(false);  // disable errors handling
+    $handler->setHandleErrors(false);  // disable errors handling, must be done before 'start' method
+    $handler->start();
  
     $connector = $logwriter->getConnector();
     $connector->setPassword('macoy123'); //sets a very insecure passwd

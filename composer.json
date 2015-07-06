@@ -19,6 +19,5 @@
 		"psr-0": {
 			"Amenadiel\\SlimPHPConsole": "."
 		}
-	},
-	"target-dir": "Amenadiel/SlimPHPConsole"
+	}
 }
