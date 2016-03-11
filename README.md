@@ -2,6 +2,8 @@
 
 PHP-Console log writer for Slim Framework
 
+[![Packagist](https://img.shields.io/packagist/dm/amenadiel/slim-phpconsole.svg)](https://packagist.org/packages/amenadiel/slim-phpconsole)
+
 Use this custom log writer to output [Slim Framework](http://www.slimframework.com/)'s log messages
 to your browser's console using [PHP-Console](https://github.com/barbushin/php-console).
 
