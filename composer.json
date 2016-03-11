@@ -1,23 +1,24 @@
 {
-	"name": "amenadiel/slim-phpconsole",
-	"type": "library",
-	"description": "PHP-Console logging support for Slim Framework",
-	"keywords": ["logging", "extensions", "middleware"],
-	"homepage": "http://github.com/amenadiel/SlimPHPConsole",
-	"license": "MIT",
-	"authors": [{
-		"name": "Felipe Figueroa",
-		"email": "amenadiel@gmail.com",
-		"homepage": "http://github.com/amenadiel/"
-	}],
-	"require": {
-		"php-console/php-console": "~3.1",
-		"slim/slim": "^2.3",
-		"php": ">=5.3.0"
-	},
-	"autoload": {
-		"psr-4": {
-			"Amenadiel\\SlimPHPConsole\\": "src/"
-		}
-	}
+    "name": "amenadiel/slim-phpconsole",
+    "type": "library",
+    "version": "0.1.0",
+    "description": "PHP-Console logging support for Slim Framework",
+    "keywords": ["logging", "extensions", "middleware"],
+    "homepage": "http://github.com/amenadiel/SlimPHPConsole",
+    "license": "MIT",
+    "authors": [{
+        "name": "Felipe Figueroa",
+        "email": "amenadiel@gmail.com",
+        "homepage": "http://github.com/amenadiel/"
+    }],
+    "require": {
+        "php-console/php-console": "~3.1",
+        "slim/slim": "^2.3",
+        "php": ">=5.3.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "Amenadiel\\SlimPHPConsole\\": "src/"
+        }
+    }
 }
