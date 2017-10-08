@@ -1,7 +1,7 @@
 <?php
 
 /**
- * PHP-Console log writer for Slim Framework
+ * PHP-Console log writer for Slim Framework.
  *
  * Use this custom log writer to output Slim's log messages
  * to your browser's console using PHP-Console.
@@ -92,34 +92,35 @@ class PHPConsoleWriter extends \Slim\Middleware
     protected $connector;
 
     /**
-     * Converts Slim log level to its matching PHP-Console tag
+     * Converts Slim log level to its matching PHP-Console tag.
+     *
      * @var array
      */
     protected $log_level = [
         \Slim\Log::EMERGENCY => 'EMERGENCY',
-        \Slim\Log::ALERT => 'ALERT',
-        \Slim\Log::CRITICAL => 'CRITICAL',
-        \Slim\Log::ERROR => 'ERROR',
-        \Slim\Log::WARN => 'WARN',
-        \Slim\Log::NOTICE => 'NOTICE',
-        \Slim\Log::INFO => 'INFO',
-        \Slim\Log::DEBUG => 'DEBUG',
+        \Slim\Log::ALERT     => 'ALERT',
+        \Slim\Log::CRITICAL  => 'CRITICAL',
+        \Slim\Log::ERROR     => 'ERROR',
+        \Slim\Log::WARN      => 'WARN',
+        \Slim\Log::NOTICE    => 'NOTICE',
+        \Slim\Log::INFO      => 'INFO',
+        \Slim\Log::DEBUG     => 'DEBUG',
     ];
 
     /**
-     * Constructs the writer, optionally starts the handler
-     * @param boolean $autostart set to true to autostart the handler
-     * @return  void
+     * Constructs the writer, optionally starts the handler.
+     *
+     * @param bool $autostart set to true to autostart the handler
+     *
+     * @return void
      */
     public function __construct($autostart = true)
     {
-
         $this->handler = \PhpConsole\Handler::getInstance();
         $this->connector = $this->handler->getConnector();
         if ($autostart && !$this->handler->isStarted()) {
             $this->handler->start();
         }
-
     }
 
     public function call()
@@ -147,11 +148,12 @@ class PHPConsoleWriter extends \Slim\Middleware
     }
 
     /**
-     * Write to log
+     * Write to log.
      *
-     * @param   mixed $object
-     * @param   int   $level
-     * @return  void
+     * @param mixed $object
+     * @param int   $level
+     *
+     * @return void
      */
     public function write($object, $level = \Slim\Log::DEBUG)
     {
@@ -159,14 +161,14 @@ class PHPConsoleWriter extends \Slim\Middleware
     }
 
     /**
-     * Converts Slim log level to matching PHPConsole's tag
+     * Converts Slim log level to matching PHPConsole's tag.
      *
-     * @param  int $slim_log_level   Slim log level we're converting from
+     * @param int $slim_log_level Slim log level we're converting from
+     *
      * @return string matching debug level
      */
     protected function get_log_level($slim_log_level)
     {
-
         return isset($this->log_level[$slim_log_level]) ?
         $this->log_level[$slim_log_level] :
         $slim_log_level;
