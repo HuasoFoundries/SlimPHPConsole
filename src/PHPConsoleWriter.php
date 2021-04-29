@@ -113,13 +113,11 @@ class PHPConsoleWriter extends \Slim\Middleware
      */
     public function __construct($autostart = true)
     {
-
         $this->handler = \PhpConsole\Handler::getInstance();
         $this->connector = $this->handler->getConnector();
         if ($autostart && !$this->handler->isStarted()) {
             $this->handler->start();
         }
-
     }
 
     public function call()
@@ -166,7 +164,6 @@ class PHPConsoleWriter extends \Slim\Middleware
      */
     protected function get_log_level($slim_log_level)
     {
-
         return isset($this->log_level[$slim_log_level]) ?
         $this->log_level[$slim_log_level] :
         $slim_log_level;
